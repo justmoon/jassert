@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+	<title>Test Suite</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.jassert.com/ajax/libs/jassert/1.0/jassert.min.js"></script>
+	<script type="text/javascript" src="../extend.js"></script>
+	<script type="text/javascript">
+$(function () {
+	var Person = Class.extend(function (isDancing) {
+		this.dancing = isDancing;
+	});
+
+	var Ninja = Person.extend(function () {
+		this.__super.call(this, false);
+	});
+
+	var p = new Person(true);
+
+	var n = new Ninja();
+
+	Tester.runSuite('Basic features', function () {
+		//           Name of test             Expected result      Actual result
+		this.runTest('Constructor'          , true               , p.dancing);
+		this.runTest('Super constructor'    , false              , n.dancing);
+	});
+
+	Tester.runSuite('Overriding methods', function () {
+		Person.prototype.doubleNumber = function (no) {
+			return no*2;
+		};
+		Person.prototype.tripleNumber = function (no) {
+			if (this.dancing) return Number.NaN;
+			else return no*3;
+		};
+		
+		Ninja.prototype.doubleNumber = function (no) {
+			var doubledNumber = this.__parent.doubleNumber.call(this, no);
+			return -doubledNumber;
+		};
+	
+		//           Name of test             Expected result      Actual result
+		this.runTest('Original method 1'    , 8                  , p.doubleNumber(4));
+		this.runTest('Original method 2'    , true               , isNaN(p.tripleNumber(4)));
+		this.runTest('Inherited method'     , 33                 , n.tripleNumber(11));
+		this.runTest('Overridden method'    , -22                , n.doubleNumber(11));
+	});
+	
+	Tester.report();
+});
+
+	</script>
+</head>
+<body></body>
+</html>
+

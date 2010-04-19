@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+	<title>jAssert Self Test</title>
+	<link rel="stylesheet" type="text/css" href="test.css"/>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script type="text/javascript" src="jassert.js"></script>
+	<script type="text/javascript">
+$(function () {
+	
+	jAssert.runSuite('Basic features', function () {
+		//           Name of test             Expected result      Actual result
+		this.runTest('Constructor'          , true               , true);
+		this.runTest('Super constructor'    , false              , true);
+	});
+
+	jAssert.runSuite('Overriding methods', function () {
+		//           Name of test             Expected result      Actual result
+		this.runTest('Original method 1'    , 8                  , 8);
+	});
+	
+	jAssert.report();
+});
+
+	</script>
+</head>
+<body></body>
+</html>
+

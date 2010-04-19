@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+	<title>jAssert - Simple JavaScript Unit Testing</title>
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" type="text/css" href="site.css"/>
+    <script type="text/javascript" src="highlight.pack.js"></script>
+    <script type="text/javascript">
+    	hljs.initHighlightingOnLoad();
+    </script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script type="text/javascript" src="src/jassert.js"></script>
+	<script type="text/javascript">
+$(function () {
+	jAssert.setContainer('#jAssert');
+	jAssert.runSuite('Basic math', function () {
+		//           Name of test             Expected result      Actual result
+		this.runTest('Addition'             , 4                  , 2 + 2);
+		this.runTest('Subtraction'          , 6                  , 10 - 4);
+		this.runTest('Fail'                 , "cool"             , "not cool");
+	});
+});
+	</script>
+</head>
+<body>
+<div id="header">
+	<div class="centered">
+		<img src="gx/logo.png" id="logo" alt="jAssert"/>
+	</div>
+</div>
+<div class="centered">
+	<img src="gx/tagline.png" id="tagline" alt="Simple JavaScript Unit Testing"/>
+	<h1>Include jQuery and jAssert</h1>
+	<pre><code class="html">&lt;script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js">&lt;/script>
+&lt;script type="text/javascript" src="http://ajax.jassert.com/ajax/libs/jassert/1.0/jassert.min.js">&lt;/script></code></pre>
+	<p>Or you can just <a href="gettemplate.php">download a pre-made template</a>.</p>
+	<h1>Write your tests</h1>
+	<pre><code class="javascript">jAssert.runSuite('Basic math', function () {
+	//           Name of test             Expected result      Actual result
+	this.runTest('Addition'             , 4                  , 2 + 2);
+	this.runTest('Subtraction'          , 6                  , 10 - 4);
+	this.runTest('Fail'                 , "cool"             , "not cool");
+});</code></pre>
+
+	<h1>Enjoy the result</h1>
+	<pre id="jAssert"></pre>
+	<p>Now you have your entire test suite contained in one HTML file!</p>
+	
+	<div class="smallprint">
+		<h2>Disclaimer</h2>
+		<p>jAssert is not affiliated with <a href="http://ejohn.org/">John Resig</a> or <a href="http://jquery.com">jQuery</a> - except in spirit.</p>
+		<h2>License</h2>
+		<p xmlns:dct="http://purl.org/dc/terms/" xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#">
+			<a rel="license" href="http://creativecommons.org/publicdomain/zero/1.0/" style="float: left; display: block; margin-right: 8px;">
+			<img src="http://i.creativecommons.org/l/zero/1.0/88x31.png" style="border-style: none;" alt="CC0" />
+			</a>
+			To the extent possible under law, <a href="http://www.justmoon.net/" rel="dct:publisher"><span property="dct:title">Stefan Thomas</span></a>
+			has waived all copyright and related or neighboring rights to
+			<span property="dct:title">jAssert</span>.<br/>
+			This work is published from
+			<span about="http://www.justmoon.net/" property="vcard:Country" datatype="dct:ISO3166" content="CH">Switzerland</span>.
+		</p>
+	</div>
+</div>
+</body>
+</html>
+

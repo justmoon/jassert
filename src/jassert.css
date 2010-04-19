@@ -1,0 +1,39 @@
+body.jAssert {
+	margin: 1em;
+}
+
+.jAssert, .jAssert h1 {
+	font-family: monospace;
+	white-space: pre;
+}
+
+.jAssert h1 {
+	font-size: 100%;
+	font-weight: normal;
+	margin: 0;
+}
+
+.jAssert h1 .title {
+	text-decoration: underline;
+}
+
+.jAssert .result.error, .jAssert .suite.error .suiteResult {
+	color: red;
+}
+
+.jAssert .result.success, .jAssert .suite.success .suiteResult {
+	color: green;
+}
+
+.jAssert .suite {
+	margin-bottom: 1em;
+}
+
+.jAssert .suite:last-child {
+	margin-bottom: 0;
+}
+
+.jAssert .suite.success .tests {
+	display: none;
+}
+
